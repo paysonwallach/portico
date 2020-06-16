@@ -1,39 +1,55 @@
-# Greeter
+<div align="center">
+    <h1>Portico</h1>
+    <p>A LightDM Greeter for Pantheon.</p>
+  <a href="https://github.com/paysonwallach/portico/releases/latest">
+    <img alt="Version 5.0.4" src="https://img.shields.io/badge/version-5.0.4-red.svg?cacheSeconds=2592000&style=flat-square" />
+  </a>
 
-[![Translation status](https://l10n.elementary.io/widgets/desktop/-/greeter/svg-badge.svg)](https://l10n.elementary.io/engage/desktop/?utm_source=widget)
+  <a href="https://github.com/paysonwallach/portico/blob/master/LICENSE" target="\_blank">
+    <img alt="Licensed under the GNU General Public License v3.0" src="https://img.shields.io/github/license/paysonwallach/Portico?style=flat-square" />
+  </a>
 
-![Screenshot](data/screenshot.png?raw=true)
+  <a href="https://buymeacoffee.com/paysonwallach">
+    <img src="https://img.shields.io/badge/donate-Buy%20me%20a%20coffe-yellow?style=flat-square">
+  </a>
+  <br>
+  <br>
+</div>
 
-## Building and Installation
+[Portico](https://github.com/paysonwallach/portico) is a fork of [Pantheon Greeter](https:///github.com/elementary/greeter).
 
-You'll need the following dependencies:
+## Installation
 
-* gnome-settings-daemon >= 3.27
-* libaccountsservice-dev
-* libgdk-pixbuf2.0-dev
-* libgranite-dev >= 5.2.3
-* libgtk-3-dev
-* liblightdm-gobject-1-dev
-* libmutter
-* libwingpanel-2.0-dev
-* libx11-dev
-* meson
-* valac
+Clone this repository or download the [latest release](https://github.com/paysonwallach/portico/releases/latest).
 
-Run `meson` to configure the build environment and then `ninja` to build
+```sh
+git clone https://github.com/paysonwallach/portico
+```
 
-    meson build --prefix=/usr
-    cd build
-    ninja
+Configure the build directory at the root of the project.
 
-To install, use `ninja install`
+```sh
+meson --prefix=/usr build
+```
 
-    sudo ninja install
+Install with `ninja`.
 
-## Testing & Debugging
+```sh
+ninja -C build install
+```
 
-Run LightDM in test mode with Xephyr:
+Set the `greeter-session` in `/etc/lightdm/lightdm.conf` to `com.paysonwallach.portico`:
 
-    lightdm --test-mode --debug
+```
+[Seat:*]
+...
+greeter-session=com.paysonwallach.portico
+```
 
-You can then find the debug log in `~/.cache/lightdm/log`
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[Portico](https://github.com/paysonwallach/portico) is licensed under the [GNU General Public License v3.0](https://github.com/paysonwallach/portico/blob/master/LICENSE).

@@ -189,7 +189,7 @@ public class Greeter.GnomeSessionManager : GLib.Object {
 
     public void unregister_client (GLib.ObjectPath client_id) throws GLib.Error {
         foreach (var client in clients) {
-            if (client.object_path == (string)client_id) {
+            if (client.object_path == (string) client_id) {
                 clients.remove (client);
                 return;
             }

@@ -218,7 +218,7 @@ public class Greeter.UserCard : Greeter.BaseCard {
         // This makes all the animations synchonous
         form_revealer.size_allocate.connect ((alloc) => {
             var total_height = form_grid.get_allocated_height () + form_grid.margin_top + form_grid.margin_bottom;
-            reveal_ratio = (double)alloc.height / (double)total_height;
+            reveal_ratio = (double) alloc.height / (double) total_height;
         });
 
         notify["show-input"].connect (() => {

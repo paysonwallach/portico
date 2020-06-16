@@ -1,0 +1,55 @@
+<div align="center">
+    <h1>{{ name }}</h1>
+    <p>{{ description }}</p>
+  <a href="{{ repository.url }}/releases/latest">
+    <img alt="Version {{ version }}" src="https://img.shields.io/badge/version-{{ version }}-red.svg?cacheSeconds=2592000&style=flat-square" />
+  </a>
+{% if meta.license %}
+  <a href="{{ meta.license.url }}" target="\_blank">
+    <img alt="Licensed under the {{ meta.license.name }}" src="https://img.shields.io/github/license/{{ meta.owner }}/{{ name }}?style=flat-square" />
+  </a>
+{% endif %}
+  <a href="https://buymeacoffee.com/paysonwallach">
+    <img src="https://img.shields.io/badge/donate-Buy%20me%20a%20coffe-yellow?style=flat-square">
+  </a>
+  <br>
+  <br>
+</div>
+
+[{{ name }}]({{ repository.url }}) is a fork of [Pantheon Greeter](https:///github.com/elementary/greeter).
+
+## Installation
+
+Clone this repository or download the [latest release]({{ repository.url }}/releases/latest).
+
+```sh
+git clone {{ repository.url }}
+```
+
+Configure the build directory at the root of the project.
+
+```sh
+meson --prefix=/usr build
+```
+
+Install with `ninja`.
+
+```sh
+ninja -C build install
+```
+
+Set the `greeter-session` in `/etc/lightdm/lightdm.conf` to `com.paysonwallach.portico`:
+
+```
+[Seat:*]
+...
+greeter-session=com.paysonwallach.portico
+```
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[{{ name }}]({{ repository.url }}) is licensed under the [{{ meta.license.name }}]({{ meta.license.url }}).
