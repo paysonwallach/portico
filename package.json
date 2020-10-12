@@ -2,28 +2,37 @@
   "name": "portico",
   "version": "5.0.4",
   "description": "A LightDM Greeter for Pantheon.",
-  "scripts": {
-    "build-meta": "node scripts/build.js",
-    "lint": "find src/ -name '*.vala' -exec uncrustify -c uncrustify.cfg --replace {} \\;"
+  "homepage": "https://github.com/paysonwallach/portico#readme",
+  "bugs": {
+    "url": "https://github.com/paysonwallach/portico/issues"
   },
+  "license": "GPL-3.0",
+  "author": "Payson Wallach <payson@paysonwallach.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/paysonwallach/portico"
   },
-  "author": "Payson Wallach",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/paysonwallach/portico/issues"
+  "scripts": {
+    "format": "find . -name '*.vala' -exec uncrustify -c uncrustify.cfg --replace {} \\;",
+    "pre-release": "scrivano",
+    "release": "standard-version"
   },
-  "homepage": "https://github.com/paysonwallach/portico#readme",
   "devDependencies": {
-    "husky": "^4.2.5",
-    "nunjucks": "^3.2.1",
-    "standard-version": "^8.0.1"
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "husky": "^4.3.0",
+    "scrivano": "^0.1.0",
+    "standard-version": "^8.0.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run format"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "precommit": "npm run pre-release"
     }
   },
   "meta": {
