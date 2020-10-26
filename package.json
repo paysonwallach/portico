@@ -41,6 +41,9 @@
     "license": {
       "name": "GNU General Public License v3.0",
       "url": "https://github.com/paysonwallach/portico/blob/master/LICENSE"
+    },
+    "screencast": {
+      "url": "https://github.com/paysonwallach/portico/blob/master/media/screencast.gif"
     }
   }
 }

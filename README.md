@@ -1,6 +1,9 @@
 <div align="center">
-    <h1>Portico</h1>
-    <p>A LightDM Greeter for Pantheon.</p>
+  <h1>Portico</h1>
+  <img src="https://github.com/paysonwallach/portico/blob/master/media/screencast.gif" />
+  <br>
+  <br>
+  <p>A LightDM Greeter for Pantheon.</p>
   <a href="https://github.com/paysonwallach/portico/releases/latest">
     <img alt="Version 5.0.4" src="https://img.shields.io/badge/version-5.0.4-red.svg?cacheSeconds=2592000&style=flat-square" />
   </a>
