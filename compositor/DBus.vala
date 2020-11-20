@@ -76,6 +76,7 @@ public class GreeterCompositor.DBus {
 
     class DummyOffscreenEffect : Clutter.OffscreenEffect {
         public signal void done_painting ();
+
 #if HAS_MUTTER336
         public override void post_paint (Clutter.PaintContext context) {
             base.post_paint (context);
@@ -85,6 +86,7 @@ public class GreeterCompositor.DBus {
 #endif
             done_painting ();
         }
+
     }
 
     public struct ColorInformation {
@@ -118,8 +120,8 @@ public class GreeterCompositor.DBus {
      * @param reference_height Height of the rectangle
      */
     public async ColorInformation get_background_color_information (int monitor,
-        int reference_x, int reference_y, int reference_width, int reference_height)
-        throws DBusError, IOError {
+                                                                    int reference_x, int reference_y, int reference_width, int reference_height)
+    throws DBusError, IOError {
         var background = wm.background_group.get_child_at_index (monitor);
         if (background == null)
             throw new DBusError.INVALID_ARGS ("Invalid monitor requested");
@@ -127,8 +129,8 @@ public class GreeterCompositor.DBus {
         var effect = new DummyOffscreenEffect ();
         background.add_effect (effect);
 
-        var tex_width = (int)background.width;
-        var tex_height = (int)background.height;
+        var tex_width = (int) background.width;
+        var tex_height = (int) background.height;
 
         int x_start = reference_x;
         int y_start = reference_y;
@@ -156,13 +158,13 @@ public class GreeterCompositor.DBus {
             double pixel = 0;
 
             double max, min, score, delta, scoreTotal = 0,
-                   rTotal2 = 0, gTotal2 = 0, bTotal2 = 0;
+            rTotal2 = 0, gTotal2 = 0, bTotal2 = 0;
 
             // code to calculate weighted average color is copied from
             // plank's lib/Drawing/DrawingService.vala average_color()
             // http://bazaar.launchpad.net/~docky-core/plank/trunk/view/head:/lib/Drawing/DrawingService.vala
-            for (int y = y_start; y < height; y++) {
-                for (int x = x_start; x < width; x++) {
+            for (int y = y_start ; y < height ; y++) {
+                for (int x = x_start ; x < width ; x++) {
                     int i = y * width * 4 + x * 4;
 
                     uint8 r = pixels[i];
@@ -240,4 +242,5 @@ public class GreeterCompositor.DBus {
 
         return { rTotal, gTotal, bTotal, mean, variance };
     }
+
 }

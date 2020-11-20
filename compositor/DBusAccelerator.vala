@@ -136,7 +136,7 @@ namespace GreeterCompositor {
                 var accel = new GrabbedAccelerator ();
                 accel.action = action;
                 accel.accelerator = accelerator;
-                grabbed_accelerators.append ((owned)accel);
+                grabbed_accelerators.append ((owned) accel);
             }
 
             return action;
@@ -176,6 +176,7 @@ namespace GreeterCompositor {
 
             return true;
         }
+
 #endif
 
         [DBus (name = "ShowOSD")]
@@ -193,7 +194,7 @@ namespace GreeterCompositor {
 #if HAS_MUTTER334
             if (parameters.contains ("level")) {
                 var double_level = parameters["level"].get_double ();
-                level = (int)(double_level * 100);
+                level = (int) (double_level * 100);
             }
 #else
             if (parameters.contains ("level"))
@@ -202,5 +203,6 @@ namespace GreeterCompositor {
 
             MediaFeedback.send (icon, level);
         }
+
     }
 }

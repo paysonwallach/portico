@@ -53,7 +53,7 @@ namespace GreeterCompositor {
         private WingpanelUtils.ColorInformation? bk_color_info = null;
 
         public WingpanelBackgroundManager (int monitor, int panel_height) {
-            Object (monitor : monitor, panel_height: panel_height);
+            Object (monitor: monitor, panel_height: panel_height);
 
             connect_signals ();
             update_bk_color_info.begin ((obj, res) => {
@@ -184,5 +184,6 @@ namespace GreeterCompositor {
                 state_changed (current_state = new_state, animation_duration);
             }
         }
+
     }
 }

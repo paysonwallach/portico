@@ -45,28 +45,30 @@ namespace GreeterCompositor {
         public Meta.Background background { get; private set; }
 
         Animation? animation = null;
-        Gee.HashMap<string,ulong> file_watches;
+        Gee.HashMap<string, ulong> file_watches;
         Cancellable cancellable;
         uint update_animation_timeout_id = 0;
 
 #if HAS_MUTTER330
         public Background (Meta.Display display, int monitor_index, string? filename,
-                BackgroundSource background_source, GDesktop.BackgroundStyle style) {
+                           BackgroundSource background_source, GDesktop.BackgroundStyle style) {
             Object (display: display,
                     monitor_index: monitor_index,
                     background_source: background_source,
                     style: style,
                     filename: filename);
         }
+
 #else
         public Background (Meta.Screen screen, int monitor_index, string? filename,
-                BackgroundSource background_source, GDesktop.BackgroundStyle style) {
+                           BackgroundSource background_source, GDesktop.BackgroundStyle style) {
             Object (screen: screen,
                     monitor_index: monitor_index,
                     background_source: background_source,
                     style: style,
                     filename: filename);
         }
+
 #endif
 
         construct {
@@ -277,5 +279,6 @@ namespace GreeterCompositor {
         void settings_changed () {
             changed ();
         }
+
     }
 }

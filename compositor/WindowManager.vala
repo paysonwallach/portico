@@ -74,8 +74,10 @@ namespace GreeterCompositor {
         GLib.HashTable<Meta.Window, int> ws_assoc = new GLib.HashTable<Meta.Window, int> (direct_hash, direct_equal);
 
         public WindowManager () {
-            info = Meta.PluginInfo () {name = "GreeterCompositor", version = Constants.VERSION, author = "elementary LLC.",
-                license = "GPLv3", description = "The greeter compositor"};
+            info = Meta.PluginInfo () {
+                name = "GreeterCompositor", version = Constants.VERSION, author = "elementary LLC.",
+                license = "GPLv3", description = "The greeter compositor"
+            };
 
 #if !HAS_MUTTER332
             Prefs.set_ignore_request_hide_titlebar (true);
@@ -133,7 +135,7 @@ namespace GreeterCompositor {
 
 #if HAS_MUTTER332
             system_background.background_actor.add_constraint (new Clutter.BindConstraint (stage,
-                Clutter.BindCoordinate.ALL, 0));
+                                                                                           Clutter.BindCoordinate.ALL, 0));
             stage.insert_child_below (system_background.background_actor, null);
 #else
             system_background.add_constraint (new Clutter.BindConstraint (stage, Clutter.BindCoordinate.ALL, 0));
@@ -211,13 +213,13 @@ namespace GreeterCompositor {
             unowned Meta.WorkspaceManager manager = display.get_workspace_manager ();
             for (int i = 0; i < manager.get_n_workspaces (); i++) {
                 foreach (var window in manager.get_workspace_by_index (i).list_windows ()) {
-                    list.add ((uint32)window.get_xwindow ());
+                    list.add ((uint32) window.get_xwindow ());
                 }
             }
 #else
             foreach (var workspace in get_screen ().get_workspaces ()) {
                 foreach (var window in workspace.list_windows ()) {
-                    list.add ((uint32)window.get_xwindow ());
+                    list.add ((uint32) window.get_xwindow ());
                 }
             }
 #endif
@@ -367,20 +369,19 @@ namespace GreeterCompositor {
                 window.disconnect (signal_id);
 
                 switch (which_change) {
-                    case Meta.SizeChange.MAXIMIZE:
-                        break;
-                    case Meta.SizeChange.FULLSCREEN:
-                    case Meta.SizeChange.UNFULLSCREEN:
-                        handle_fullscreen_window (actor.get_meta_window (), which_change);
-                        break;
+                case Meta.SizeChange.MAXIMIZE:
+                    break;
+                case Meta.SizeChange.FULLSCREEN:
+                case Meta.SizeChange.UNFULLSCREEN:
+                    handle_fullscreen_window (actor.get_meta_window (), which_change);
+                    break;
                 }
 
                 size_change_completed (actor);
             });
         }
 
-        public override void minimize (WindowActor actor) {
-        }
+        public override void minimize (WindowActor actor) {}
 
         public override void unminimize (WindowActor actor) {
             actor.show ();
@@ -520,14 +521,14 @@ namespace GreeterCompositor {
 
         public override void confirm_display_change () {
             var pid = Util.show_dialog ("--question",
-                _("Does the display look OK?"),
-                "30",
-                null,
-                _("Keep This Configuration"),
-                _("Restore Previous Configuration"),
-                "preferences-desktop-display",
-                0,
-                null, null);
+                                        _("Does the display look OK?"),
+                                        "30",
+                                        null,
+                                        _("Keep This Configuration"),
+                                        _("Restore Previous Configuration"),
+                                        "preferences-desktop-display",
+                                        0,
+                                        null, null);
 
             ChildWatch.add (pid, (pid, status) => {
                 var ok = false;
@@ -552,8 +553,10 @@ namespace GreeterCompositor {
             new_parent.add_child (actor);
             actor.unref ();
         }
+
     }
 
-    [CCode (cname="clutter_x11_get_stage_window")]
+    [CCode (cname = "clutter_x11_get_stage_window")]
     public extern X.Window x_get_stage_window (Clutter.Actor stage);
+
 }

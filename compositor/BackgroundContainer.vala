@@ -44,6 +44,7 @@ namespace GreeterCompositor {
         ~BackgroundContainer () {
             Meta.MonitorManager.@get ().monitors_changed.disconnect (update);
         }
+
 #else
         public Meta.Screen screen { get; construct; }
 
@@ -60,6 +61,7 @@ namespace GreeterCompositor {
         ~BackgroundContainer () {
             screen.monitors_changed.disconnect (update);
         }
+
 #endif
 
         void update () {
@@ -87,5 +89,6 @@ namespace GreeterCompositor {
         void background_changed () {
             changed ();
         }
+
     }
 }

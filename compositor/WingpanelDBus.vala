@@ -39,6 +39,7 @@ namespace GreeterCompositor {
                 state_changed (state, animation_duration);
             });
         }
+
     }
 
     public class WingpanelDBus : Object {
@@ -94,5 +95,6 @@ namespace GreeterCompositor {
                 warning ("Closing DBus service failed: %s", e.message);
             }
         }
+
     }
 }

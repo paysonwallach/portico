@@ -48,7 +48,7 @@ namespace GreeterCompositor {
             var icon_list = icon_pixbuf_cache.get_keys ();
 
             foreach (var xid_key in list) {
-                var xid = (uint32)uint64.parse (xid_key.split ("::")[0]);
+                var xid = (uint32) uint64.parse (xid_key.split ("::")[0]);
                 if (!(xid in xids)) {
                     var pixbuf = xid_pixbuf_cache.get (xid_key);
                     for (var j = 0; j < pixbuf_list.length (); j++) {
@@ -120,10 +120,10 @@ namespace GreeterCompositor {
                     continue;
                 }
                 if (window.window_type == Meta.WindowType.NORMAL ||
-                  window.window_type == Meta.WindowType.DIALOG ||
-                  window.window_type == Meta.WindowType.MODAL_DIALOG) {
-                      n ++;
-                  }
+                    window.window_type == Meta.WindowType.DIALOG ||
+                    window.window_type == Meta.WindowType.MODAL_DIALOG) {
+                    n++;
+                }
             }
             return n;
         }
@@ -176,11 +176,11 @@ namespace GreeterCompositor {
         }
 #if HAS_MUTTER330
         /**
-        * Ring the system bell, will most likely emit a <beep> error sound or, if the
-        * audible bell is disabled, flash the display
-        *
-        * @param display The display to flash, if necessary
-        */
+         * Ring the system bell, will most likely emit a <beep> error sound or, if the
+         * audible bell is disabled, flash the display
+         *
+         * @param display The display to flash, if necessary
+         */
         public static void bell (Meta.Display display) {
             if (Meta.Prefs.bell_is_audible ()) {
                 Gdk.beep ();
@@ -188,6 +188,7 @@ namespace GreeterCompositor {
                 display.get_compositor ().flash_display (display);
             }
         }
+
 #else
         /**
          * Ring the system bell, will most likely emit a <beep> error sound or, if the
@@ -202,6 +203,7 @@ namespace GreeterCompositor {
                 screen.get_display ().get_compositor ().flash_screen (screen);
             }
         }
+
 #endif
     }
 }

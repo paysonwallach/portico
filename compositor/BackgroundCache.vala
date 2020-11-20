@@ -37,8 +37,8 @@ namespace GreeterCompositor {
 
         public signal void file_changed (string filename);
 
-        Gee.HashMap<string,FileMonitor> file_monitors;
-        Gee.HashMap<string,BackgroundSource> background_sources;
+        Gee.HashMap<string, FileMonitor> file_monitors;
+        Gee.HashMap<string, BackgroundSource> background_sources;
 
         Animation animation;
         string animation_filename;
@@ -48,8 +48,8 @@ namespace GreeterCompositor {
         }
 
         construct {
-            file_monitors = new Gee.HashMap<string,FileMonitor> ();
-            background_sources = new Gee.HashMap<string,BackgroundSource> ();
+            file_monitors = new Gee.HashMap<string, FileMonitor> ();
+            background_sources = new Gee.HashMap<string, BackgroundSource> ();
         }
 
         public void monitor_file (string filename) {
@@ -122,5 +122,6 @@ namespace GreeterCompositor {
                 }
             }
         }
+
     }
 }

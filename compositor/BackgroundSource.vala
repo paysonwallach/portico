@@ -36,20 +36,22 @@ namespace GreeterCompositor {
 
         internal int use_count { get; set; default = 0; }
 
-        Gee.HashMap<int,Background> backgrounds;
+        Gee.HashMap<int, Background> backgrounds;
 
 #if HAS_MUTTER330
         public BackgroundSource (Meta.Display display, string settings_schema) {
             Object (display: display, settings: new Settings (settings_schema));
         }
+
 #else
         public BackgroundSource (Meta.Screen screen, string settings_schema) {
             Object (screen: screen, settings: new Settings (settings_schema));
         }
+
 #endif
 
         construct {
-            backgrounds = new Gee.HashMap<int,Background> ();
+            backgrounds = new Gee.HashMap<int, Background> ();
 
 #if HAS_MUTTER330
             Meta.MonitorManager.@get ().monitors_changed.connect (monitors_changed);
@@ -151,7 +153,7 @@ namespace GreeterCompositor {
 
         // list of keys that are actually relevant for us
         const string[] options = { "color-shading-type", "picture-opacity",
-                "picture-options", "picture-uri", "primary-color", "secondary-color" };
+                                   "picture-options", "picture-uri", "primary-color", "secondary-color" };
 
         void settings_changed (string key) {
             if (!(key in options))
@@ -170,13 +172,14 @@ namespace GreeterCompositor {
 
         SettingsHashCache get_current_settings_hash_cache () {
             return {
-                settings.get_value ("color-shading-type").hash (),
-                settings.get_value ("picture-opacity").hash (),
-                settings.get_value ("picture-options").hash (),
-                settings.get_value ("picture-uri").hash (),
-                settings.get_value ("primary-color").hash (),
-                settings.get_value ("secondary-color").hash ()
+                       settings.get_value ("color-shading-type").hash (),
+                       settings.get_value ("picture-opacity").hash (),
+                       settings.get_value ("picture-options").hash (),
+                       settings.get_value ("picture-uri").hash (),
+                       settings.get_value ("primary-color").hash (),
+                       settings.get_value ("secondary-color").hash ()
             };
         }
+
     }
 }

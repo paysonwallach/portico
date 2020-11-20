@@ -32,6 +32,7 @@ namespace GreeterCompositor.WingpanelUtils {
 
     private class DummyOffscreenEffect : Clutter.OffscreenEffect {
         public signal void done_painting ();
+
 #if HAS_MUTTER336
         public override void post_paint (Clutter.PaintContext context) {
             base.post_paint (context);
@@ -44,6 +45,7 @@ namespace GreeterCompositor.WingpanelUtils {
                 return false;
             });
         }
+
     }
 
     public struct ColorInformation {
@@ -125,13 +127,13 @@ namespace GreeterCompositor.WingpanelUtils {
              */
             for (int y = y_start; y < (y_start + height); y++) {
                 for (int x = x_start; x < (x_start + width); x++) {
-                    int i = (y * (int)texture_width * 4) + (x * 4);
+                    int i = (y * (int) texture_width * 4) + (x * 4);
 
                     uint8 b = pixels[i];
                     uint8 g = pixels[i + 1];
                     uint8 r = pixels[i + 2];
 
-                    pixel = (0.3 * r + 0.59 * g + 0.11 * b) ;
+                    pixel = (0.3 * r + 0.59 * g + 0.11 * b);
 
                     pixel_lums[y * width + x] = pixel;
 

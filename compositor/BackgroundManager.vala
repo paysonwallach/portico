@@ -47,10 +47,12 @@ namespace GreeterCompositor {
         public BackgroundManager (Meta.Display display, int monitor_index, bool control_position = true) {
             Object (display: display, monitor_index: monitor_index, control_position: control_position);
         }
+
 #else
         public BackgroundManager (Meta.Screen screen, int monitor_index, bool control_position = true) {
             Object (screen: screen, monitor_index: monitor_index, control_position: control_position);
         }
+
 #endif
 
         construct {
@@ -184,5 +186,6 @@ namespace GreeterCompositor {
 
             return background_actor;
         }
+
     }
 }

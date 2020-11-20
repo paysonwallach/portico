@@ -86,4 +86,5 @@
         if (system_background != null)
             system_background.set_color (DEFAULT_BACKGROUND_COLOR);
     }
+
 }

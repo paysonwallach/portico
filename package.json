@@ -1,20 +1,23 @@
 {
   "name": "portico",
-  "version": "5.0.4",
   "description": "A LightDM Greeter for Pantheon.",
-  "homepage": "https://github.com/paysonwallach/portico#readme",
-  "bugs": {
-    "url": "https://github.com/paysonwallach/portico/issues"
-  },
   "license": "GPL-3.0",
   "author": "Payson Wallach <payson@paysonwallach.com>",
+  "homepage": "https://github.com/paysonwallach/portico#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/paysonwallach/portico"
   },
+  "bugs": {
+    "url": "https://github.com/paysonwallach/portico/issues"
+  },
+  "version": "5.0.4",
   "scripts": {
-    "format": "find . -name '*.vala' -exec uncrustify -c uncrustify.cfg --replace {} \\;",
-    "pre-release": "scrivano",
+    "format": "run-p format:*",
+    "format:js": "prettier --write .",
+    "format:package.json": "prettier-package-json --write",
+    "format:vala": "find . -name '*.vala' -exec uncrustify -c uncrustify.cfg --replace {} \\;",
+    "prerelease": "scrivano",
     "release": "standard-version"
   },
   "devDependencies": {
@@ -30,11 +33,6 @@
       "pre-commit": "npm run format"
     }
   },
-  "standard-version": {
-    "scripts": {
-      "precommit": "npm run pre-release"
-    }
-  },
   "meta": {
     "title": "Portico",
     "owner": "paysonwallach",
@@ -44,6 +42,11 @@
     },
     "screencast": {
       "url": "https://github.com/paysonwallach/portico/blob/master/media/screencast.gif"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "precommit": "npm run prerelease"
     }
   }
 }

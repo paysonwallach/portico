@@ -1,61 +1,59 @@
 .background {
-  opacity    : 0;
-  transition : opacity 1s ease;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 .background.initialized {
-  opacity : 1;
+  opacity: 1;
 }
 
 .rounded {
-  border-radius : 4px;
+  border-radius: 4px;
 }
 
 .user image,
 .user label {
-  color       : #fff;
-  text-shadow : 0 0 2px alpha (#000, 0.3),
-                0 1px 2px alpha (#000, 0.6);
-  font-weight : bold;
-  transition  : all 200ms ease-in-out;
+  color: #fff;
+  text-shadow: 0 0 2px alpha (#000, 0.3), 0 1px 2px alpha (#000, 0.6);
+  font-weight: bold;
+  transition: all 200ms ease-in-out;
 }
 
 .dark .user image,
 .dark .user label,
 .user entry image,
 .user entry label {
-  color       : alpha (#000, 0.65);
-  text-shadow : 0 0 2px alpha (#fff, 0.3),
-                0 1px 0 alpha (#fff, 0.25);
+  color: alpha (#000, 0.65);
+  text-shadow: 0 0 2px alpha (#fff, 0.3), 0 1px 0 alpha (#fff, 0.25);
 }
 
 @keyframes shake {
   0% {
-    margin-right : 32px;
-    margin-left  : -32px;
+    margin-right: 32px;
+    margin-left: -32px;
   }
 
   25% {
-    margin-right : -32px;
-    margin-left  : 32px;
+    margin-right: -32px;
+    margin-left: 32px;
   }
 
   50% {
-    margin-right : 16px;
-    margin-left  : -16px;
+    margin-right: 16px;
+    margin-left: -16px;
   }
 
   75% {
-    margin-right : -16px;
-    margin-left  : 16px;
+    margin-right: -16px;
+    margin-left: 16px;
   }
 
   100% {
-    margin-right : 0;
-    margin-left  : 0;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
 .shake {
-  animation : shake 0.4s ease-in-out 1;
+  animation: shake 0.4s ease-in-out 1;
 }

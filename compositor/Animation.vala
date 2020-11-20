@@ -75,5 +75,6 @@ namespace GreeterCompositor {
 
             this.key_frame_files = key_frame_files;
         }
+
     }
 }

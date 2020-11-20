@@ -27,7 +27,7 @@
 
 namespace GreeterCompositor {
     const OptionEntry[] OPTIONS = {
-        { "version", 0, OptionFlags.NO_ARG, OptionArg.CALLBACK, (void*) print_version, "Print version", null },
+        { "version", 0, OptionFlags.NO_ARG, OptionArg.CALLBACK, (void *) print_version, "Print version", null },
         { null }
     };
 
@@ -63,4 +63,5 @@ namespace GreeterCompositor {
         typeof (GreeterCompositor.Utils).class_ref ();
         return Meta.run ();
     }
+
 }

@@ -29,7 +29,8 @@ namespace GreeterCompositor {
     [DBus (name = "org.freedesktop.Notifications")]
     interface DBusNotifications : GLib.Object {
         public abstract uint32 notify (string app_name, uint32 replaces_id, string app_icon, string summary,
-            string body, string[] actions, HashTable<string, Variant> hints, int32 expire_timeout) throws GLib.Error;
+                                       string body, string[] actions, HashTable<string, Variant> hints, int32 expire_timeout) throws GLib.Error;
+
     }
 
     public class MediaFeedback : GLib.Object {
@@ -42,6 +43,7 @@ namespace GreeterCompositor {
                 icon = _icon;
                 level = _level;
             }
+
         }
 
         static MediaFeedback? instance = null;
@@ -72,6 +74,7 @@ namespace GreeterCompositor {
         construct {
             try {
                 pool = new ThreadPool<Feedback>.with_owned_data ((ThreadPoolFunc<Feedback>) send_feedback, 1, false);
+
             } catch (ThreadError e) {
                 critical (e.message);
                 pool = null;
@@ -80,7 +83,7 @@ namespace GreeterCompositor {
             try {
                 connection = Bus.get_sync (BusType.SESSION);
                 dbus_name_owner_changed_signal_id = connection.signal_subscribe ("org.freedesktop.DBus", "org.freedesktop.DBus",
-                    "NameOwnerChanged", "/org/freedesktop/DBus", null, DBusSignalFlags.NONE, (DBusSignalCallback) handle_name_owner_changed);
+                                                                                 "NameOwnerChanged", "/org/freedesktop/DBus", null, DBusSignalFlags.NONE, (DBusSignalCallback) handle_name_owner_changed);
             } catch (IOError e) {
                 critical (e.message);
             }
@@ -95,11 +98,11 @@ namespace GreeterCompositor {
                 return;
 
             if (after != "" && before == "")
-                new Thread<void*> (null, () => {
+                new Thread<void *>(null, () => {
                     lock (notifications) {
                         try {
-                            notifications = connection.get_proxy_sync<DBusNotifications> ("org.freedesktop.Notifications",
-                                "/org/freedesktop/Notifications", DBusProxyFlags.NONE);
+                            notifications = connection.get_proxy_sync<DBusNotifications>("org.freedesktop.Notifications",
+                                                                                         "/org/freedesktop/Notifications", DBusProxyFlags.NONE);
                         } catch (Error e) {
                             notifications = null;
                         }
@@ -125,5 +128,6 @@ namespace GreeterCompositor {
                 critical ("%s", e.message);
             }
         }
+
     }
 }
