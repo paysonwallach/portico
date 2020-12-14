@@ -18,12 +18,6 @@ add_project_arguments(
   language: 'vala'
 )
 
-ubuntu_patched_gsd = get_option('ubuntu-patched-gsd')
-
-if ubuntu_patched_gsd
-  add_project_arguments(['--define', 'UBUNTU_PATCHED_GSD'], language: 'vala')
-endif
-
 greeter_resources = gnome.compile_resources(
   'greeter-resources',
   'data/greeter.gresource.xml',

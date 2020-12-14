@@ -2,11 +2,7 @@ install_path = join_paths(get_option('prefix'), get_option('sbindir'))
 gsd_dir = get_option('gsd-dir')
 
 if gsd_dir == ''
-  if ubuntu_patched_gsd
-    gsd_dir = join_paths(get_option('prefix'), 'lib', 'gnome-settings-daemon' + '/')
-  else
     gsd_dir = join_paths(get_option('prefix'), get_option('libexecdir') + '/')
-  endif
 endif
 
 message('Path to gnome-settings-daemon: ' + gsd_dir)
