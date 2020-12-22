@@ -23,6 +23,20 @@
 
 ## Installation
 
+[Portico](https://github.com/paysonwallach/portico) requires the following dependencies:
+
+* gnome-settings-daemon
+* libaccountsservice-dev
+* libgdk-pixbuf2.0-dev
+* libgranite-dev
+* libgtk-3-dev
+* liblightdm-gobject-1-dev
+* libmutter
+* libwingpanel-2.0-dev
+* libx11-dev
+* meson
+* valac
+
 Clone this repository or download the [latest release](https://github.com/paysonwallach/portico/releases/latest).
 
 ```sh
