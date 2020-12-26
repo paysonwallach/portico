@@ -81,12 +81,6 @@ public class Greeter.MainWindow : Gtk.ApplicationWindow {
         extra_login_grid.column_spacing = 12;
         extra_login_grid.column_homogeneous = true;
 
-        try {
-            var gtksettings = Gtk.Settings.get_default ();
-            gtksettings.gtk_icon_theme_name = "elementary";
-            gtksettings.gtk_theme_name = "elementary";
-        } catch (Error e) {}
-
         user_cards = new GLib.Queue<unowned Greeter.UserCard> ();
 
         var manual_card = new Greeter.ManualCard ();
