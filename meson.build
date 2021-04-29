@@ -8,15 +8,7 @@ project(
 gnome = import('gnome')
 i18n = import('i18n')
 
-add_global_arguments(
-  '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
-  language:'c'
-)
-
-add_project_arguments(
-  ['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
-  language: 'vala'
-)
+vapi_dir = join_paths(meson.current_source_dir(), 'vapi')
 
 greeter_resources = gnome.compile_resources(
   'greeter-resources',
@@ -28,6 +20,18 @@ compositor_resources = gnome.compile_resources(
   'compositor-resources',
   'data/compositor.gresource.xml',
   source_dir: 'data'
+)
+
+add_project_arguments([
+    '-DG_LOG_DOMAIN="@0@"'.format(meson.project_name()),
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name())
+  ],
+  language:'c'
+)
+
+add_project_arguments(
+  ['--vapidir', vapi_dir],
+  language: 'vala'
 )
 
 subdir('src')
