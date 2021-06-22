@@ -123,7 +123,8 @@ public class Greeter.UserCard : Greeter.BaseCard {
 
         settings = new GLib.Settings ("com.paysonwallach.portico");
 
-        if (background_uri == null) {
+        var background = File.new_for_path (lightdm_user.background);
+        if (!background.query_exists ()) {
             string path = GLib.Path.build_filename ("/", "var", "lib", "lightdm-data", lightdm_user.name, "wallpaper");
             if (GLib.FileUtils.test (path, FileTest.EXISTS)) {
                 var background_directory = GLib.File.new_for_path (path);
@@ -133,7 +134,7 @@ public class Greeter.UserCard : Greeter.BaseCard {
                     GLib.FileInfo file_info;
                     while ((file_info = enumerator.next_file ()) != null) {
                         if (file_info.get_file_type () == GLib.FileType.REGULAR) {
-                            background_uri = File.new_build_filename (path, file_info.get_name ()).get_uri ();
+                            background = File.new_build_filename (path, file_info.get_name ());
                             break;
                         }
                     }
@@ -142,6 +143,8 @@ public class Greeter.UserCard : Greeter.BaseCard {
                 }
             }
         }
+
+        background_uri = background.get_uri ();
 
         var main_grid = new Gtk.Grid ();
         main_grid.margin_bottom = 48;
@@ -242,7 +245,7 @@ public class Greeter.UserCard : Greeter.BaseCard {
 
         grab_focus.connect (() => {
             password_entry.grab_focus_without_selecting ();
-            settings.set_string ("picture-uri", background_uri);
+            settings.set_string ("picture-uri", File.new_for_path (lightdm_user.background).get_uri ());
         });
     }
 
